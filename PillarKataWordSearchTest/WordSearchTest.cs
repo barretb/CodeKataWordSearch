@@ -37,8 +37,11 @@ namespace PillarKataWordSearchTest
         [TestMethod]
         public void TestGridSuccessfullySetup()
         {
-            search.
-            return ;
+            Assert.AreEqual('U', search.letterGrid[0,0]);
+            Assert.AreEqual('L', search.letterGrid[1, 1]);
+            Assert.AreEqual('B', search.letterGrid[14, 14]);
+            Assert.AreEqual('T', search.letterGrid[11, 10]);
+            Assert.AreEqual('Q', search.letterGrid[8, 6]);
         }
     }
 }
