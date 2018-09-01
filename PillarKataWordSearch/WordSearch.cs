@@ -32,7 +32,6 @@ namespace PillarKataWordSearch
 
             //find a starting match
             var firstLetter = searchword[0];
-            var secondLetter = searchword[1];
 
             for (var startX = 0; startX < _blockSize; startX++)
             {
@@ -45,22 +44,30 @@ namespace PillarKataWordSearch
                         {
                             for (var searchDirectionY = -1; searchDirectionY <= 1; searchDirectionY++)
                             {
-                                if(searchDirectionX == 0 && searchDirectionY == 0) continue;
+                                if (searchDirectionX == 0 && searchDirectionY == 0) continue;
+                                var currentX = startX;
+                                var currentY = startY;
 
-
-
-
-                                var currentX = startX + searchDirectionX;
-                                if(currentX < 0 || currentX >= _blockSize) continue; //out of bounds
-                                var currentY = startY + searchDirectionY;
-                                if(currentY < 0 || currentY >= _blockSize) continue; //out of bounds
-                                
-
-                                if (LetterGrid[currentX, currentY] == secondLetter)
+                                var found = false;
+                                for (var letter = 1; letter < searchword.Length; letter++)
                                 {
-                                    //found a direction to check
+                                    currentX = currentX + searchDirectionX;
+                                    if (currentX < 0 || currentX >= _blockSize) break; //out of bounds
+                                    currentY = currentY + searchDirectionY;
+                                    if (currentY < 0 || currentY >= _blockSize) break; //out of bounds
 
-                                } 
+                                    if (LetterGrid[currentX, currentY] != searchword[letter])
+                                    {
+                                        break;
+                                    }
+
+                                    //TODO Add text to result string with coords
+
+                                    if (letter == searchword.Length - 1)
+                                    {
+                                        found = true;
+                                    }
+                                }
                             }
                         }
 
