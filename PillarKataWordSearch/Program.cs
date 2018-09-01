@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace PillarKataWordSearch
 {
@@ -6,7 +7,13 @@ namespace PillarKataWordSearch
     {
         static void Main(string[] args)
         {
-           
+            var file = args[0];
+            using (var stream = new StreamReader(file))
+            {
+
+            }
+
+            Console.ReadLine();
         }
     }
 }
