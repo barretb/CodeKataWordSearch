@@ -8,8 +8,7 @@ namespace PillarKataWordSearch
 {
     public class WordSearch
     {
-        private List<string> searchWords;
-        private char[,] letterGrid;
+        public char[,] letterGrid;
 
         public WordSearch(int blockSize, List<string> letterGridList)
         {

@@ -37,6 +37,7 @@ namespace PillarKataWordSearchTest
         [TestMethod]
         public void TestGridSuccessfullySetup()
         {
+            search.
             return ;
         }
     }
