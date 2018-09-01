@@ -30,6 +30,8 @@ namespace PillarKataWordSearchTest
             letterblocks.Add("O,J,Y,E,U,L,N,C,C,L,Y,B,Z,U,H");
             letterblocks.Add("W,Z,M,I,S,U,K,U,R,B,I,D,U,X,S");
             letterblocks.Add("K,Y,L,B,Q,Q,P,M,D,F,C,K,E,A,B");
+
+            search = new WordSearch(blockSize, searchWords, letterblocks);
         }
 
 
