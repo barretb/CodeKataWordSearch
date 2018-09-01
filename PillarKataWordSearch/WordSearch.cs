@@ -56,6 +56,9 @@ namespace PillarKataWordSearch
                                 var currentX = startX;
                                 var currentY = startY;
 
+                                coords = new StringBuilder();
+                                coords.Append($"({startY},{startX})"); //reverse coords to account for array vs math x,y grid thinking
+
                                 for (var letter = 1; letter < searchword.Length; letter++)
                                 {
                                     currentX = currentX + searchDirectionX;
