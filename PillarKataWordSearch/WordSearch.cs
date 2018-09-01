@@ -11,7 +11,7 @@ namespace PillarKataWordSearch
         private List<string> searchWords;
         private char[,] letterGrid;
 
-        public WordSearch(string searchWordsInput, int blockSize, List<string> letterGridList)
+        public WordSearch(int blockSize, string searchWordsInput, List<string> letterGridList)
         {
             letterGrid = new char[blockSize, blockSize];
             searchWords = searchWordsInput.Split(',').ToList();
