@@ -10,7 +10,7 @@ namespace PillarKataWordSearch
     {
         private readonly char[,] _letterGrid;
         public char[,] LetterGrid => _letterGrid;
-        private int _blockSize;
+        private readonly int _blockSize;
 
         public WordSearch(int blockSize, List<string> letterGridList)
         {
@@ -28,7 +28,8 @@ namespace PillarKataWordSearch
 
         public string SearchWord(string searchword)
         {
-            if (string.IsNullOrEmpty(searchword) || searchword.Length == 1) return ""; //invalid word length
+            if (string.IsNullOrEmpty(searchword) || searchword.Length == 1) return $"{searchword}: "; //invalid word length
+            var strCoords = "";
 
             //find a starting match
             var firstLetter = searchword[0];
@@ -40,15 +41,21 @@ namespace PillarKataWordSearch
                     if (LetterGrid[startX, startY] == firstLetter)
                     {
                         //found a start
+                        var found = false;
+                        var coords = new StringBuilder();
+                        coords.Append($"({startX},{startY})");
+
                         for (var searchDirectionX = -1; searchDirectionX <= 1; searchDirectionX++)
                         {
+                            if (found) break;
                             for (var searchDirectionY = -1; searchDirectionY <= 1; searchDirectionY++)
                             {
+                                if (found) break;
+
                                 if (searchDirectionX == 0 && searchDirectionY == 0) continue;
                                 var currentX = startX;
                                 var currentY = startY;
 
-                                var found = false;
                                 for (var letter = 1; letter < searchword.Length; letter++)
                                 {
                                     currentX = currentX + searchDirectionX;
@@ -61,7 +68,7 @@ namespace PillarKataWordSearch
                                         break;
                                     }
 
-                                    //TODO Add text to result string with coords
+                                    coords.Append($",({currentX},{currentY})");
 
                                     if (letter == searchword.Length - 1)
                                     {
@@ -71,11 +78,15 @@ namespace PillarKataWordSearch
                             }
                         }
 
+                        if (found)
+                        {
+                            strCoords = coords.ToString();
+                        }
                     }
                 }
             }
 
-            return "";
+            return $"{searchword}: {strCoords}";
         }
 
 
