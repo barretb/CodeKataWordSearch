@@ -58,6 +58,8 @@ namespace PillarKataWordSearchTest
             var searchWords = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA".Split(',').ToList();
 
             var results = _search.SearchWords(searchWords);
+
+            Assert.IsTrue(results.Any(x=>x == "BONES: (0,6),(0,7),(0,8),(0,9),(0,10)"));
         }
     }
 }

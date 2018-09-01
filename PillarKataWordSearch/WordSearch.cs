@@ -89,6 +89,15 @@ namespace PillarKataWordSearch
             return $"{searchword}: {strCoords}";
         }
 
+        public List<string> SearchWords(List<string> searchWords)
+        {
+            var results = new List<string>();
+
+
+            return results;
+        }
+
+
 
     }
 }
