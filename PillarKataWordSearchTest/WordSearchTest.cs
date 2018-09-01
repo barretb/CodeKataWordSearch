@@ -12,7 +12,6 @@ namespace PillarKataWordSearchTest
         [TestInitialize]
         public void TestSetup()
         {
-            var searchWords = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA";
             var blockSize = 15;
             var letterblocks = new List<string>();
             letterblocks.Add("U,M,K,H,U,L,K,I,N,V,J,O,C,W,E");
@@ -31,7 +30,7 @@ namespace PillarKataWordSearchTest
             letterblocks.Add("W,Z,M,I,S,U,K,U,R,B,I,D,U,X,S");
             letterblocks.Add("K,Y,L,B,Q,Q,P,M,D,F,C,K,E,A,B");
 
-            search = new WordSearch(blockSize, searchWords, letterblocks);
+            search = new WordSearch(blockSize, letterblocks);
         }
 
 
