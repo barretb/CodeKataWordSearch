@@ -35,7 +35,6 @@ namespace PillarKataWordSearchTest
             _search = new WordSearch(blockSize, letterblocks);
         }
 
-
         [TestMethod]
         public void TestGridSuccessfullySetup()
         {
@@ -44,6 +43,12 @@ namespace PillarKataWordSearchTest
             Assert.AreEqual('B', _search.LetterGrid[14, 14]);
             Assert.AreEqual('T', _search.LetterGrid[11, 10]);
             Assert.AreEqual('Q', _search.LetterGrid[8, 6]);
+        }
+
+        [TestMethod]
+        public void TestSearchForBones()
+        {
+
         }
     }
 }
