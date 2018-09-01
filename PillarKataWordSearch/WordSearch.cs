@@ -43,7 +43,7 @@ namespace PillarKataWordSearch
                         //found a start
                         var found = false;
                         var coords = new StringBuilder();
-                        coords.Append($"({startX},{startY})");
+                        coords.Append($"({startY},{startX})"); //reverse coords to account for array vs math x,y grid thinking
 
                         for (var searchDirectionX = -1; searchDirectionX <= 1; searchDirectionX++)
                         {
@@ -68,7 +68,7 @@ namespace PillarKataWordSearch
                                         break;
                                     }
 
-                                    coords.Append($",({currentX},{currentY})");
+                                    coords.Append($",({currentY},{currentX})"); //reverse coords to account for array vs math x,y grid thinking
 
                                     if (letter == searchword.Length - 1)
                                     {
