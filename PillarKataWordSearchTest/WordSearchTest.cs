@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PillarKataWordSearch;
 
@@ -49,6 +50,14 @@ namespace PillarKataWordSearchTest
         public void TestSearchForBones()
         {
             Assert.AreEqual("BONES: (0,6),(0,7),(0,8),(0,9),(0,10)", _search.SearchWord("BONES")); 
+        }
+
+        [TestMethod]
+        public void TestSearchMultipleWords()
+        {
+            var searchWords = "BONES,KHAN,KIRK,SCOTTY,SPOCK,SULU,UHURA".Split(',').ToList();
+
+            var results = _search.SearchWords(searchWords);
         }
     }
 }
