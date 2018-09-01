@@ -92,7 +92,10 @@ namespace PillarKataWordSearch
         public List<string> SearchWords(List<string> searchWords)
         {
             var results = new List<string>();
-
+            foreach (var searchWord in searchWords)
+            {
+                results.Add(SearchWord(searchWord));
+            }
 
             return results;
         }
