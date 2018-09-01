@@ -41,17 +41,20 @@ namespace PillarKataWordSearch
                     if (LetterGrid[startX, startY] == firstLetter)
                     {
                         //found a start
-                        int xChange = 0;
-                        int yChange = 0;
-
-                        for (var searchX = -1; searchX <= 1; searchX++)
+                        for (var searchDirectionX = -1; searchDirectionX <= 1; searchDirectionX++)
                         {
-                            for (var searchY = -1; searchY <= 1; searchY++)
+                            for (var searchDirectionY = -1; searchDirectionY <= 1; searchDirectionY++)
                             {
-                                var currentX = startX + searchX;
+                                if(searchDirectionX == 0 && searchDirectionY == 0) continue;
+
+
+
+
+                                var currentX = startX + searchDirectionX;
                                 if(currentX < 0 || currentX >= _blockSize) continue; //out of bounds
-                                var currentY = startY + searchY;
+                                var currentY = startY + searchDirectionY;
                                 if(currentY < 0 || currentY >= _blockSize) continue; //out of bounds
+                                
 
                                 if (LetterGrid[currentX, currentY] == secondLetter)
                                 {
