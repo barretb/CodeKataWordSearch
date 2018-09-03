@@ -8,20 +8,19 @@ namespace PillarKataWordSearch
 {
     public class WordSearch
     {
-        private readonly char[,] _letterGrid;
-        public char[,] LetterGrid => _letterGrid;
+        public char[,] LetterGrid { get; }
         private readonly int _blockSize;
 
-        public WordSearch(int blockSize, List<string> letterGridList)
+        public WordSearch(int blockSize, IReadOnlyList<string> letterGridList)
         {
             _blockSize = blockSize;
-            _letterGrid = new char[blockSize, blockSize];
+            LetterGrid = new char[blockSize, blockSize];
             for (var x = 0; x < blockSize; x++)
             {
                 var listRow = letterGridList[x].Split(',');
                 for (var y = 0; y < blockSize; y++)
                 {
-                    _letterGrid[x, y] = listRow[y].FirstOrDefault();
+                    LetterGrid[x, y] = listRow[y].FirstOrDefault();
                 }
             }
         }
@@ -38,53 +37,53 @@ namespace PillarKataWordSearch
             {
                 for (var startY = 0; startY < _blockSize; startY++)
                 {
-                    if (LetterGrid[startX, startY] == firstLetter)
+                    if (LetterGrid[startX, startY] != firstLetter) continue;
+
+                    //found a start
+                    var foundFullWordMatch = false;
+                    var resultCoordinates = new StringBuilder();
+                    resultCoordinates.Append($"({startY},{startX})"); //reverse coords to account for array vs math x,y grid thinking
+
+                    // once we've found a matching start letter, search the grid in each direction for the full word
+                    for (var searchDirectionX = -1; searchDirectionX <= 1; searchDirectionX++)
                     {
-                        //found a start
-                        var found = false;
-                        var coords = new StringBuilder();
-                        coords.Append($"({startY},{startX})"); //reverse coords to account for array vs math x,y grid thinking
-
-                        for (var searchDirectionX = -1; searchDirectionX <= 1; searchDirectionX++)
+                        if (foundFullWordMatch) break;
+                        for (var searchDirectionY = -1; searchDirectionY <= 1; searchDirectionY++)
                         {
-                            if (found) break;
-                            for (var searchDirectionY = -1; searchDirectionY <= 1; searchDirectionY++)
+                            if (foundFullWordMatch) break;
+
+                            if (searchDirectionX == 0 && searchDirectionY == 0) continue;
+                            var currentX = startX;
+                            var currentY = startY;
+
+                            resultCoordinates = new StringBuilder();
+                            resultCoordinates.Append($"({startY},{startX})"); //reverse coords to account for array vs math x,y grid thinking
+
+                            for (var wordLetterPosition = 1; wordLetterPosition < searchword.Length; wordLetterPosition++)
                             {
-                                if (found) break;
+                                currentX = currentX + searchDirectionX;
+                                if (currentX < 0 || currentX >= _blockSize) break; //out of bounds
+                                currentY = currentY + searchDirectionY;
+                                if (currentY < 0 || currentY >= _blockSize) break; //out of bounds
 
-                                if (searchDirectionX == 0 && searchDirectionY == 0) continue;
-                                var currentX = startX;
-                                var currentY = startY;
-
-                                coords = new StringBuilder();
-                                coords.Append($"({startY},{startX})"); //reverse coords to account for array vs math x,y grid thinking
-
-                                for (var letter = 1; letter < searchword.Length; letter++)
+                                if (LetterGrid[currentX, currentY] != searchword[wordLetterPosition])
                                 {
-                                    currentX = currentX + searchDirectionX;
-                                    if (currentX < 0 || currentX >= _blockSize) break; //out of bounds
-                                    currentY = currentY + searchDirectionY;
-                                    if (currentY < 0 || currentY >= _blockSize) break; //out of bounds
+                                    break;
+                                }
 
-                                    if (LetterGrid[currentX, currentY] != searchword[letter])
-                                    {
-                                        break;
-                                    }
+                                resultCoordinates.Append($",({currentY},{currentX})"); //reverse coords to account for array vs math x,y grid thinking
 
-                                    coords.Append($",({currentY},{currentX})"); //reverse coords to account for array vs math x,y grid thinking
-
-                                    if (letter == searchword.Length - 1)
-                                    {
-                                        found = true;
-                                    }
+                                if (wordLetterPosition == searchword.Length - 1)
+                                {
+                                    foundFullWordMatch = true;
                                 }
                             }
                         }
-
-                        if (found)
-                        {
-                            strCoords = coords.ToString();
-                        }
+                    }
+                    
+                    if (foundFullWordMatch)
+                    {
+                        strCoords = resultCoordinates.ToString();
                     }
                 }
             }
@@ -92,18 +91,9 @@ namespace PillarKataWordSearch
             return $"{searchword}: {strCoords}";
         }
 
-        public List<string> SearchWords(List<string> searchWords)
+        public List<string> SearchWords(IEnumerable<string> searchWords)
         {
-            var results = new List<string>();
-            foreach (var searchWord in searchWords)
-            {
-                results.Add(SearchWord(searchWord));
-            }
-
-            return results;
+            return searchWords.Select(SearchWord).ToList();
         }
-
-
-
     }
 }

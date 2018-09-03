@@ -11,7 +11,7 @@ namespace PillarKataWordSearch
         {
             var file = args[0];
             string searchWords;
-                var searchGrid = new List<string>();
+            var searchGrid = new List<string>();
             int size;
 
             using (var stream = new StreamReader(file))
@@ -51,7 +51,6 @@ namespace PillarKataWordSearch
             {
                 Console.WriteLine(result);
             }
-
 
             Console.ReadLine();
         }
