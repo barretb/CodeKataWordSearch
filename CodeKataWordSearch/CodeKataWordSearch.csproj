@@ -3,7 +3,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <StartupObject>PillarKataWordSearch.Program</StartupObject>
+    <StartupObject>CodeKataWordSearch.Program</StartupObject>
+    <AssemblyName>CodeKataWordSearch</AssemblyName>
+    <RootNamespace>CodeKataWordSearch</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

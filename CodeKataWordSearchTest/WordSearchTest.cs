@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using CodeKataWordSearch;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PillarKataWordSearch;
 
-namespace PillarKataWordSearchTest
+namespace CodeKataWordSearchTest
 {
     [TestClass]
     public class WordSearchTest

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillarKataWordSearch", "PillarKataWordSearch\PillarKataWordSearch.csproj", "{AF68C62A-F273-4B31-A61E-8896B4C51E37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeKataWordSearch", "CodeKataWordSearch\CodeKataWordSearch.csproj", "{AF68C62A-F273-4B31-A61E-8896B4C51E37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PillarKataWordSearchTest", "PillarKataWordSearchTest\PillarKataWordSearchTest.csproj", "{578A41DA-7A4E-4944-BE83-FB5620EF50FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeKataWordSearchTest", "CodeKataWordSearchTest\CodeKataWordSearchTest.csproj", "{578A41DA-7A4E-4944-BE83-FB5620EF50FB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{40FE2C2B-90DC-4FDF-BAF1-F90C4CD979E2}"
 	ProjectSection(SolutionItems) = preProject
