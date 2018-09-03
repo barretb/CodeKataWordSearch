@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PillarKataWordSearch": {
+      "commandName": "Project",
+      "commandLineArgs": "testdata1.txt"
+    }
+  }
+}
